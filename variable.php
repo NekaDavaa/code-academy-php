@@ -1,6 +1,5 @@
 <?php
 
-$int = 3;
-$float = 10.55;
+$myArr = ['Pesho', 'Gosho', 'Niki'];
 
-echo $int + $float;
+print_r($myArr);
