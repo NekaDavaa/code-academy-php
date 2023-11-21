@@ -1,8 +1,5 @@
 <?php
 
-function myFun($text) {
-	$uppercase = strtoupper($text);
-	return $uppercase;
-}
+$input = 'nekadava';
 
-echo myFun('asd');
+echo str_pad($input, 60, "-", STR_PAD_BOTH);
