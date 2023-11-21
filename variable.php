@@ -1,5 +1,6 @@
 <?php
-$string = 'aasdasd12312sd';
 
+$int = 3;
+$float = 10.55;
 
-echo strlen($string);
+echo $int + $float;
