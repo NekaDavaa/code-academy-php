@@ -1,9 +1,8 @@
 <?php
 
-function convertTemp($cels) {
-	$cels = intval($cels);
-	$convert = ($cels * 9/5) + 32;
-	return $convert;
+function myFun($text) {
+	$uppercase = strtoupper($text);
+	return $uppercase;
 }
 
-echo convertTemp(25);
+echo myFun('asd');
