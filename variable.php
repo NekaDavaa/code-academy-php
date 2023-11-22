@@ -1,13 +1,9 @@
-<form method="POST">
-<input type="number" name="user_input">
-<input type="submit">
-</form>
-
 <?php
 
-if (isset($_POST['user_input'])) {
- $user_input = $_POST['user_input'];
+$pizza  = "piece1 piece2 piece3 piece4 piece5 piece6";
 
- echo $result = strlen($user_input);
+$pieces = explode(" ", $pizza);
 
-}
+echo "<pre>";
+print_r($pieces);
+echo "</pre>";
