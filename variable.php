@@ -1,17 +1,7 @@
 <?php
-
-
-$new_array = [];
-
-$i=0;
-
-while ($i <= 30) {
-	$i++;
-	$new_array[] = $i;
+$number = 32563;
+$numberAsString = strval($number);
+foreach (str_split($numberAsString) as $digit) {
+    echo $digit . "<br>";
 }
-
-echo "<pre>";
-print_r($new_array);
-echo "</pre>";
-
 ?>
