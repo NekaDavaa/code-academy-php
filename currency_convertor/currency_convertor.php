@@ -1,6 +1,7 @@
 <?php
 require 'class.php';
 $curr_obj = new Currency;
+$calc_obj = new Calculator;
 ?>
 <form class="calculator" method="POST">
 <label>От Валута
@@ -22,8 +23,8 @@ $curr_obj = new Currency;
 <input type="submit" name="submit" />
 </form>
 <div>
-	<p>Резултат: <?php $curr_obj->fromCurrency(); ?></p>
-	<p>Резултат: <?php $curr_obj->toCurrency(); ?></p>
+	<p>Резултат: <?php 
+	echo $calc_obj->convertSum(); ?></p>
 </div>
 
 <style>
