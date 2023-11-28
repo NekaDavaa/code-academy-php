@@ -1,22 +1,17 @@
 <?php
 
-class Add {
-   private $total;
+class Text {
+   private $text = "";
 
-   public function __construct ($total = 0) {
-        $this->total = $total;
+   public function __construct ($text) {
+      $this->text = $text;
    }
 
-   public function add() {
-   	$this->total++;
-   }
-
-   public function getTotalValue() {
-   	return $this->total;
+   public function getText() {
+      return $this->text;
    }
 
 }
 
-$add_obj = new Add();
-$add_obj->add();
-$add_obj->getTotalValue();
+$text_obj = new Text("asasdasd");
+echo $text_obj->getText();
