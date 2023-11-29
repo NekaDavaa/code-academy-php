@@ -14,13 +14,19 @@ abstract class Product {
 class Book extends Product {
   public function asdname(){ }
   private $stranici;
-  public function __construct($name, $stranici) {
+  private $price;
+  public function __construct($name, $stranici, $price) {
   	 $this->stranici = $stranici;
+  	 $this->price = $price;
   	 $this->setName($name);
   }
    
    public function __toString() {
         return "Book Name: " . $this->getName() . ", Pages: " . $this->stranici . "\n";
+    }
+
+     public function getPrice() {
+        return $this->price;
     }
 }
 
@@ -42,6 +48,15 @@ class Cart {
     }
 
 
+    public function getTotalPrice() {
+        $totalPrice = 0;
+        foreach ($this->products as $product) {
+            $totalPrice += $product->getPrice();
+        }
+        return $totalPrice;
+    }
+
+
 
     public function checkCart() {
         echo "<pre>";
@@ -50,12 +65,34 @@ class Cart {
     }
 }
 
-$book_obj = new Book("Zaglavie1", "11");
-$book_obj2 = new Book("Zaglavie2", "22");
+$book_obj = new Book("Zaglavie1", "11", "1");
+$book_obj2 = new Book("Zaglavie2", "22", "2");
+$book_obj3 = new Book("Zaglavie3", "33", "3");
 $cart_obj = new Cart();
 
 $cart_obj->addProduct($book_obj);
 $cart_obj->addProduct($book_obj2);
+$cart_obj->addProduct($book_obj3);
 //$cart_obj->checkCart();
-$cart_obj->listCart();
+//$cart_obj->listCart();
 //To do payment class
+class Payment {
+	private $cart;
+	public function __construct(Cart $cart) {
+         $this->cart = $cart;
+	}
+    public function getCart() {
+    	return $this->cart;
+    }
+
+  public function proccedPayment() {
+        $totalPrice = $this->cart->getTotalPrice();
+        echo "Total Price: " . $totalPrice . "\n";
+        echo "Payment Processed Successfully!";
+    }
+
+}
+
+$payment_obj = new Payment($cart_obj);
+
+$payment_obj->proccedPayment();
