@@ -77,22 +77,29 @@ $cart_obj->addProduct($book_obj3);
 //$cart_obj->listCart();
 //To do payment class
 class Payment {
-	private $cart;
-	public function __construct(Cart $cart) {
+    private $cart;
+    private $paymentType;
+
+    public function __construct(Cart $cart, PaymentType $paymentType) {
          $this->cart = $cart;
-	}
-    public function getCart() {
-    	return $this->cart;
+         $this->paymentType = $paymentType;
     }
 
-  public function proccedPayment() {
+    public function proceedPayment() {
         $totalPrice = $this->cart->getTotalPrice();
-        echo "Total Price: " . $totalPrice . "\n";
+        echo "Total Price: " . $totalPrice . "lv.<br>";
+        echo "Payment Method: " . $this->paymentType->value . "<br>";
         echo "Payment Processed Successfully!";
     }
-
 }
 
-$payment_obj = new Payment($cart_obj);
+enum PaymentType: string {
+    case CreditCard = 'creditcard';
+    case PayPal = 'paypal';
+    case Bitcoin = 'bitcoin';
+}
 
-$payment_obj->proccedPayment();
+
+$payment_obj = new Payment($cart_obj, PaymentType::CreditCard);
+
+$payment_obj->proceedPayment();
