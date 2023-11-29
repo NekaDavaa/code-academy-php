@@ -32,22 +32,22 @@ class Book extends Product {
 
 class Cart {
 	private $products;
-
     public function __construct() {
         $this->products = [];
     }
-
     public function addProduct(Product $product) {
         $this->products[] = $product;
     }
-
     public function listCart() {
+    	if (!empty($this->products)) {
     	foreach ($this->products as $product) {
     		 echo $product . "<br>";
     	}
+    	}
+    	else {
+    		echo "No items in cart";
+    	}
     }
-
-
     public function getTotalPrice() {
         $totalPrice = 0;
         foreach ($this->products as $product) {
@@ -55,27 +55,18 @@ class Cart {
         }
         return $totalPrice;
     }
-
-
-
     public function checkCart() {
         echo "<pre>";
         var_dump($this->products);
         echo "</pre>";
     }
 }
-
-$book_obj = new Book("Zaglavie1", "11", "1");
-$book_obj2 = new Book("Zaglavie2", "22", "2");
-$book_obj3 = new Book("Zaglavie3", "33", "3");
 $cart_obj = new Cart();
-
-$cart_obj->addProduct($book_obj);
-$cart_obj->addProduct($book_obj2);
-$cart_obj->addProduct($book_obj3);
-//$cart_obj->checkCart();
+//$book_obj = new Book("Zaglavie1", "11", "1");
+//$cart_obj->addProduct($book_obj);
 //$cart_obj->listCart();
-//To do payment class
+
+//Payment Class
 class Payment {
     private $cart;
     private $paymentType;
@@ -100,6 +91,5 @@ enum PaymentType: string {
 }
 
 
-$payment_obj = new Payment($cart_obj, PaymentType::CreditCard);
-
-$payment_obj->proceedPayment();
+//$payment_obj = new Payment($cart_obj, PaymentType::CreditCard);
+//$payment_obj->proceedPayment();
