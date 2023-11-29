@@ -61,6 +61,7 @@ class Cart {
     }
 }
 $cart_obj = new Cart();
+
 //$book_obj = new Book("Zaglavie1", "11", "1");
 //$cart_obj->addProduct($book_obj);
 //$cart_obj->listCart();
