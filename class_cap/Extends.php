@@ -29,7 +29,6 @@ class Book extends Product {
         return $this->price;
     }
 }
-
 class Cart {
 	private $products;
     public function __construct() {
@@ -83,7 +82,6 @@ class Payment {
         echo "Payment Processed Successfully!";
     }
 }
-
 enum PaymentType: string {
     case CreditCard = 'creditcard';
     case PayPal = 'paypal';
