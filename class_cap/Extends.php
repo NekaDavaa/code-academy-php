@@ -56,6 +56,6 @@ $cart_obj = new Cart();
 
 $cart_obj->addProduct($book_obj);
 $cart_obj->addProduct($book_obj2);
-$cart_obj->checkCart();
+//$cart_obj->checkCart();
 $cart_obj->listCart();
 //To do payment class
