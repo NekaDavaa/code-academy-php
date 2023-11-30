@@ -92,13 +92,12 @@ class Library {
 
 $Library = new Library();
 //$myBook = new Book ("IME Kniga", "Avtor", "9999", "123");
-//$myBook2 = new Book ("IME Kniga1", "Avtor", "9999", "123");
+//$myBook2 = new Book ("IME Kniga1", "Avtor", "9999", "12312312");
 //$Library->addBook($myBook);
-//$Library->removeBook("123");
 //$Library->addBook($myBook2);
-//$Library->checkBooks();
+//$Library->removeBook("123");
 //$Library->findBook("123");
-//$Library->listBooks();
+$Library->listBooks();
 
 //to do - every new book to be unique  isbn
 //to do - clone book with magic method (which need to be with unique isbn)
