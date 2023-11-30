@@ -17,9 +17,17 @@ class Book {
         return $this->isbn;
     }
 
+    public function getAuthor() {
+    	return $this->author;
+    }
+
      public function getTitle() {
-    return $this->title;
-}
+        return $this->title;
+     }
+
+     public function getPublicationYear() {
+     	return $this->publicationYear;
+     }
 
 
 }
@@ -32,12 +40,14 @@ class Library {
     }
     
     public function addBook(Book $book) {
+        $message = "";
         if ($this->isIsbnUnique($book->getIsbn())) {
             $this->books[] = $book;
-            echo "Book added successfully.<br>";
+            $message = "Book added successfully.";
         } else {
-            echo "A book with this ISBN already exists.<br>";
+              $message = "A book with this ISBN already exists.";
         }
+         return $message;
     }
         private function isIsbnUnique($isbn) {
         foreach ($this->books as $book) {
@@ -72,19 +82,23 @@ class Library {
     	}
     }
 
-    public function checkBooks() {
-     	echo "<pre>";
-     	var_dump($this->books);
-     	echo "</pre>";
+    public function listBooks() {
+       
+        foreach ($this->books as $book) {
+             echo "Book name is: " . $book->getTitle() . "<br>";
+        }
      }
 }
 
 $Library = new Library();
-$myBook = new Book ("IME Kniga", "Avtor", "9999", "123");
+//$myBook = new Book ("IME Kniga", "Avtor", "9999", "123");
 //$myBook2 = new Book ("IME Kniga1", "Avtor", "9999", "123");
 //$Library->addBook($myBook);
 //$Library->removeBook("123");
 //$Library->addBook($myBook2);
 //$Library->checkBooks();
 //$Library->findBook("123");
+//$Library->listBooks();
 
+//to do - every new book to be unique  isbn
+//to do - clone book with magic method (which need to be with unique isbn)
