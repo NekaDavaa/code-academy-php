@@ -83,9 +83,13 @@ class Library {
     }
 
     public function listBooks() {
-       
+         
         foreach ($this->books as $book) {
              echo "Book name is: " . $book->getTitle() . "<br>";
+             echo "Book Author is: " . $book->getAuthor() . "<br>";
+             echo "Book Published Year is: " . $book->getPublicationYear() . "<br>";
+             echo "Book ISBN Number: " . $book->getIsbn();
+             echo "<hr>";
         }
      }
 }
