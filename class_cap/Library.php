@@ -109,6 +109,3 @@ class Library {
 //$Library->removeBook("123");
 //$Library->findBook("12312312");
 //$Library->listBooks();
-
-
-//to do - clone book with magic method (which need to be with unique isbn)
