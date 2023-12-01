@@ -140,19 +140,19 @@ public function offsetSet($offset, $value) {
 
 
 
-$Library = new Library();
-$myBook = new Book ("IME Kniga", "Avtor", "9999", "123");
-$myBook2 = new Book ("IME Kniga1", "Avtor", "9999", "12312312");
-$cloneMyBook = clone $myBook;
-$Library->addBook($myBook);
-$Library->addBook($myBook2);
-$Library->addBook($cloneMyBook);
+//$Library = new Library();
+//$myBook = new Book ("IME Kniga", "Avtor", "9999", "123");
+//$myBook2 = new Book ("IME Kniga1", "Avtor", "9999", "12312312");
+//$cloneMyBook = clone $myBook;
+//$Library->addBook($myBook);
+//$Library->addBook($myBook2);
+//$Library->addBook($cloneMyBook);
 //$Library->removeBook("123");
 //$Library->findBook("12312312");
 //$Library->listBooks();
 
-$serializedLibrary = serialize($Library);
-$newLibrary = unserialize($serializedLibrary);
+//$serializedLibrary = serialize($Library);
+//$newLibrary = unserialize($serializedLibrary);
 
-echo $serializedLibrary;
+//echo $serializedLibrary;
 //echo $newLibrary[0]->getTitle() . "\n";
