@@ -14,7 +14,6 @@ class Book {
 	}
 
      public function __clone() {
-        // Generate a new unique ISBN for the cloned book
         $this->isbn = time() . rand(1000, 9999);
     }
 
@@ -37,7 +36,7 @@ class Book {
 
 }
 
-class Library {
+class Library implements ArrayAccess, Countable, Serializable {
     private $books = [];
 
     public function __construct() {
@@ -74,18 +73,21 @@ class Library {
         echo "No book found with that ISBN.<br>"; 
     }
     
-    public function findBook($isbn) {
-    	echo "Queried books:" . "<br>";
-    	foreach ($this->books as $book) {
-             if ($book->getIsbn() === $isbn) {
+  public function findBook($isbn) {
+    $found = false;
+    foreach ($this->books as $book) {
+        if ($book->getIsbn() === $isbn) {
             echo "Book name is: " . $book->getTitle() . "<br>";
-             }
-             else {
-             	echo "No book found.";
-             	break;
-             }
-    	}
+            $found = true;
+            break; 
+        }
     }
+    
+    if (!$found) {
+        echo "No book found with that ISBN.<br>";
+    }
+}
+
 
     public function listBooks() {
          
@@ -97,15 +99,60 @@ class Library {
              echo "<hr>";
         }
      }
+public function offsetSet($offset, $value) {
+        if (!$value instanceof Book) {
+            throw new InvalidArgumentException("Value must be a Book");
+        }
+        if ($offset === null) {
+            $this->books[] = $value;
+        } else {
+            $this->books[$offset] = $value;
+        }
+    }
+
+    public function offsetExists($offset) {
+        return isset($this->books[$offset]);
+    }
+
+    public function offsetUnset($offset) {
+        unset($this->books[$offset]);
+    }
+
+    public function offsetGet($offset) {
+        return isset($this->books[$offset]) ? $this->books[$offset] : null;
+    }
+
+    // Countable method
+    public function count() {
+        return count($this->books);
+    }
+
+    // Serializable methods
+    public function serialize() {
+        return serialize($this->books);
+    }
+
+    public function unserialize($serialized) {
+        $this->books = unserialize($serialized);
+    }
 }
 
+
+
+
 $Library = new Library();
-//$myBook = new Book ("IME Kniga", "Avtor", "9999", "123");
-//$myBook2 = new Book ("IME Kniga1", "Avtor", "9999", "12312312");
-//$cloneMyBook = clone $myBook;
-//$Library->addBook($myBook);
-//$Library->addBook($cloneMyBook);
-//$Library->addBook($myBook2);
+$myBook = new Book ("IME Kniga", "Avtor", "9999", "123");
+$myBook2 = new Book ("IME Kniga1", "Avtor", "9999", "12312312");
+$cloneMyBook = clone $myBook;
+$Library->addBook($myBook);
+$Library->addBook($myBook2);
+$Library->addBook($cloneMyBook);
 //$Library->removeBook("123");
 //$Library->findBook("12312312");
 //$Library->listBooks();
+
+$serializedLibrary = serialize($Library);
+$newLibrary = unserialize($serializedLibrary);
+
+echo $serializedLibrary;
+//echo $newLibrary[0]->getTitle() . "\n";
