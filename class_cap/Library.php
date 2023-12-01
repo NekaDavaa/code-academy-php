@@ -13,6 +13,11 @@ class Book {
 		$this->isbn = $isbn;
 	}
 
+     public function __clone() {
+        // Generate a new unique ISBN for the cloned book
+        $this->isbn = time() . rand(1000, 9999);
+    }
+
     public function getIsbn() {
         return $this->isbn;
     }
@@ -94,14 +99,16 @@ class Library {
      }
 }
 
-$Library = new Library();
+//$Library = new Library();
 //$myBook = new Book ("IME Kniga", "Avtor", "9999", "123");
 //$myBook2 = new Book ("IME Kniga1", "Avtor", "9999", "12312312");
+//$cloneMyBook = clone $myBook;
 //$Library->addBook($myBook);
+//$Library->addBook($cloneMyBook);
 //$Library->addBook($myBook2);
 //$Library->removeBook("123");
-//$Library->findBook("123");
+//$Library->findBook("12312312");
 //$Library->listBooks();
 
-//to do - every new book to be unique  isbn
+
 //to do - clone book with magic method (which need to be with unique isbn)
