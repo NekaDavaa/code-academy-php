@@ -37,34 +37,42 @@ class Config {
         foreach ($phpReadableData as $key => $value) {
         	$this->set("$key", "$value");
         }
-        
-        echo "var dump ot json-a" . "<br>";
-        echo "<pre>";
-    	
-    	var_dump ($phpReadableData);
-    	echo "</pre>";
-    	
+    }
+
+    public function exportToJson(string $given_filename) {
+    	 
+         $txt = $this->checksetvalue();
+         $txt_to_json = json_encode($txt);
+         $newfile = fopen("$given_filename", "w");
+         fwrite($newfile, $txt_to_json);
+         fclose($newfile);
 
     }
 
+
+    
     public function checksetvalue() {
-    	echo "<pre>";
-    	var_dump ($this->settings);
-    	echo "</pre>";
+    	
+    	return $this->settings;
+    	
     }
 
 
 }
 
 $myConfig = new Config();
-$myConfig->set("kola", "mercedes");	
+$myConfig->set("kola", "mercedes");
+
 try {
-	$myConfig->loadFromFile("data" . ".json");
+	//$myConfig->loadFromFile("mnogokeys" . ".json");
 } 
 catch (Exception $e) {
 	echo "Грешка: " . $e->getmessage() . "<br>";
 }
 
+//$myConfig->exportToJson("mnogokeys" . ".json");
 
-$myConfig->checksetvalue();
+echo "<pre>";
+var_dump ($myConfig->checksetvalue());
+echo "</pre>";
 
