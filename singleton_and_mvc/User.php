@@ -50,5 +50,3 @@ class AuthUser {
 //$auth->logout();
 //$sessionManager = SessionManager::getInstance();
 //var_dump ($sessionManager->getSessionData("User"));
-
-
