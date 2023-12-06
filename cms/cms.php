@@ -57,3 +57,14 @@ class Config {
     	
     }
 }
+
+
+//$myConf = new Config();
+//$myConf->set("kola1", "mercedes");
+//myConf->set("oaskdoak", "mercedes");
+//$myConf->set("opaskdao", "mercedes");
+//$myConf->set("okdasodkas", "mercedes");
+//$myConf->loadFromFile("asd");
+//echo "<pre>";
+//print_r ($myConf->checksetvalue());
+//echo "</pre>";
